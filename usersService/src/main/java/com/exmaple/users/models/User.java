@@ -1,6 +1,5 @@
 package com.exmaple.users.models;
 
-import com.exmaple.users.models.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +22,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity<UserDto> {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -55,8 +54,4 @@ public class User extends BaseEntity<UserDto> {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     List<Role> roles = new ArrayList<>();
 
-    @Override
-    public UserDto toDto() {
-        return modelMapper.map(this, UserDto.class);
-    }
 }
