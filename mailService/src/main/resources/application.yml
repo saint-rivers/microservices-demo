@@ -1,0 +1,3 @@
+spring:
+  mail:
+    port: 8082
