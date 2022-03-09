@@ -1,4 +1,4 @@
-package com.exmaple.users;
+package com.exmaple.users.user;
 
 import com.exmaple.users.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;

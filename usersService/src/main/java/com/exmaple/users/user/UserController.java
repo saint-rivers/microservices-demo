@@ -1,4 +1,4 @@
-package com.exmaple.users;
+package com.exmaple.users.user;
 
 import com.exmaple.users.models.UserDto;
 import com.exmaple.users.models.UserRequest;

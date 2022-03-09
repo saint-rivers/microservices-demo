@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "User")
@@ -46,6 +48,12 @@ public class User extends BaseEntity<UserDto> {
 
     @Column(name = "last_updated", nullable = false)
     private LocalDateTime lastUpdated = LocalDateTime.now();
+
+    @ManyToMany
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    List<Role> roles = new ArrayList<>();
 
     @Override
     public UserDto toDto() {
