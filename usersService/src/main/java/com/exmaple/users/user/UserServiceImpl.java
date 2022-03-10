@@ -1,9 +1,7 @@
 package com.exmaple.users.user;
 
-import com.exmaple.users.models.Mappable;
-import com.exmaple.users.models.User;
-import com.exmaple.users.models.UserDto;
-import com.exmaple.users.models.UserRequest;
+import com.exmaple.users.client.MailClient;
+import com.exmaple.users.models.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,10 +13,13 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService, Mappable<User, UserRequest, UserDto> {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+    private final MailClient mailClient;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
+
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, MailClient mailClient) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.mailClient = mailClient;
     }
 
     @Override
@@ -30,6 +31,7 @@ public class UserServiceImpl implements UserService, Mappable<User, UserRequest,
     @Override
     public UserDto registerUser(UserRequest userRequest) {
         User user = userRepository.save(toEntity(userRequest));
+        mailClient.sendMail(new ConfirmRequest("rocaviusii@gmail.com", "123"));
         return toDto(user);
     }
 
