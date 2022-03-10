@@ -11,7 +11,7 @@ import java.util.Properties;
 @Service
 public class EmailServerImpl {
 
-    static class EnvConfig {
+    private static class EnvConfig {
         private final Dotenv dotenv;
 
         EnvConfig() {

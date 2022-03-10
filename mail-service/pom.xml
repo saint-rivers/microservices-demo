@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mailService</artifactId>
+    <artifactId>mail-service</artifactId>
 
     <dependencies>
         <dependency>
